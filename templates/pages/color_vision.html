@@ -1,9 +1,9 @@
 {% extends 'layouts/main.html' %}
-{% block title %}20/20 Vision{% endblock %}
+{% block title %}Color Vision{% endblock %}
 {% block content %}
 
 <div class="page-header">
-  <h1>20/20 Vision</h1>
+  <h1>Color Vision</h1>
 </div>
 <div>  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +12,12 @@
       <h2>Instructions</h2>
       <p>Something something .............. blah....blah....blah............</p>
       <br>
-      <!-- <textarea id="results" cols="80" rows="5"></textarea> -->
- 
-      <!-- <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
-      <input onclick="responsiveVoice.speak('Hello World');" type="button" value="Play" /> -->
-    <img id='cur_img' src="static/img/a_1.jpg" />
+    <img id='cur_img' src="static/img/c_1.jpeg" />
+    <!-- <h2>Flask Web Form</h2> -->
     
     <form action="" method="post" role="form">
       <div class="form-group">
-        <label for="name">Enter what you see:</label>
+        <label for="name">Do you see a number:</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="What's your name?">
         
         <input type="text" class="form-control" id="hidden_img" name='hidden_img'  value = {{x}} hidden>
@@ -47,9 +44,9 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
+  
   <h2>Suggestions and Tips to improve your vision</h2>
   <p>Something something ..............</p>
-
   </div>
 
 </div>
