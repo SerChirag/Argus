@@ -16,19 +16,23 @@
  
       <!-- <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
       <input onclick="responsiveVoice.speak('Hello World');" type="button" value="Play" /> -->
-    <img id='cur_img' src="static/img/a_1.jpg" />
     
-    <form action="" method="post" role="form">
-      <div class="form-group">
-        <label for="name">Enter what you see:</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="What's your name?">
-        
-        <input type="text" class="form-control" id="hidden_img" name='hidden_img'  value = {{x}} hidden>
-        
-    
-      </div>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+    <div id="testBox">
+      <img id='cur_img' src="static/img/a_1.jpg" />
+      
+      <form action="" method="post" role="form">
+        <div class="form-group">
+          <label for="name">Enter what you see:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="What do you see?">
+          
+          <input type="text" class="form-control" id="hidden_img" name='hidden_img'  value style="display:none;" >
+          
+      
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
     <div id='successAlert' class="alert alert-success" role="alert" style="display:none;"></div>
     <div id='errorAlert' class="alert alert-error" role="alert" style="display:none;"></div>
     {% with messages = get_flashed_messages(with_categories=true) %}

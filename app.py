@@ -64,17 +64,16 @@ image_dict={
     'a_2.jpg':'a_3.jpg',
     'a_3.jpg':'a_4.jpg',
     'a_4.jpg':'a_5.jpg',
-    'a_5.png':'a_6.jpg',
-    'a_6.jpg':'test.png',
+    'a_5.jpg':'a_6.jpg',
+    'a_6.jpg':'a_1.jpg',
 }
 spell_dict={
-    'a_1.jpg':'kvd',
-    'a_2.jpg':'zshc',
-    'a_3.jpg':'kvd',
-    'a_4.jpg':'kvd',
-    'a_5.jpg':'zshc',
-    'a_6.jpg':'kvd',
-    'test.png':'a_1.jpg',
+    'a_1.jpg':'MWDBEF',
+    'a_2.jpg':'KLMNCG',
+    'a_3.jpg':'KTPAFE',
+    'a_4.jpg':'UVOQKW',
+    'a_5.jpg':'ILFEGC',
+    'a_6.jpg':'POIKMN',
 }
 
 def calculate():
@@ -95,28 +94,6 @@ def process():
 
 @app.route('/20-20', methods=['GET', 'POST'])
 def twenty():
-    # form = LoginForm(request.form)
-    # form = ReusableForm(request.form)
-    # print (form.errors)
-    # if request.method == 'POST':
-    #     name=request.form['name']
-    #     img_name = request.form['hidden_img']
-    #     response.append(name)
-        # counter = counter + 1
-        # password=request.form['password']
-        # email=request.form['email']
-        # print (name, " ", email, " ", password)
-    
-    # if form.validate():
-    #     # Save the comment here.
-    #     if(name=='10'):
-    #         flash('Thanks for registration ' + (str)(calculate()))
-    #     else:
-    #         flash('Thanks for registration '+image_dict[img_name])
-    # else:
-    #     flash('Error: All the form fields are required. ')
-    
-    # return render_template('hello.html', form=form)
     return render_template('pages/20-20.html')
 
 @app.route('/color_vision', methods=['GET', 'POST'])
