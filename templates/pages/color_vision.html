@@ -1,3 +1,50 @@
+
+<script type="text/javascript">
+
+
+  var bnum=1;
+  var bscore = 0;
+  var bmap = new Map();
+  bmap.set(1,8);
+  bmap.set(2,29);
+  bmap.set(3,5);
+  bmap.set(4,3);
+  bmap.set(5,15);
+  bmap.set(6,74);
+  bmap.set(7,6);
+  bmap.set(8,45);
+  bmap.set(9,5);
+  bmap.set(10,7); 
+
+  function bSolve() {
+    console.log("b_input = "+parseInt(document.getElementById("b_input").value)+"   bmapbnum = "+bmap.get(bnum));
+    if(bmap.get(bnum) == parseInt(document.getElementById("b_input").value))
+        bscore = bscore+1;
+    if(bnum == 10){
+        bComplete();
+    }
+    else{
+        bnum = bnum+1;
+        console.log("bscore = "+bscore+"   bnum = "+bnum);
+        document.getElementById("b_img").innerHTML = "<img src=\"http://localhost:5000/static/img/b"+bnum+".gif\">";
+        
+        document.getElementById("bimgNo").innerHTML = bnum;
+    }
+  }
+
+  function bComplete(){
+
+      document.getElementById("bTestBox").innerHTML = "";
+      document.getElementById("bTestBox").innerHTML = "Your could identify "+bscore+" out of 10 images.<br> A healthy eye should be able to identity 10/10 images."+'<h2 > <a href="{{ url_for("side_vision") }}">Proceed for more info.</a></li></h2></p>';
+  }
+
+
+</script>
+
+
+
+
+
 {% extends 'layouts/main.html' %}
 {% block title %}Color Vision{% endblock %}
 {% block content %}
@@ -9,23 +56,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <div class="container">
-      <h2>Instructions</h2>
-      <p>Something something .............. blah....blah....blah............</p>
+
+    <div id="bTestBox" style="text-align: center;">
+        <h3>Attempt to identify the hidden number</h3>
+        <br>
+        Image No. <span id="bimgNo">1</span>
+        <br>
+        <br>
+
+      <div id="b_img"> <img  src="http://localhost:5000/static/img/b1.gif"> </div>
       <br>
-    <img id='cur_img' src="static/img/c_1.jpeg" />
-    <!-- <h2>Flask Web Form</h2> -->
-    
-    <form action="" method="post" role="form">
-      <div class="form-group">
-        <label for="name">Do you see a number:</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="What's your name?">
-        
-        <input type="text" class="form-control" id="hidden_img" name='hidden_img'  value = {{x}} hidden>
-        
-    
-      </div>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+      <br>
+      <input type="input" id="b_input" placeholder="What do you see?">
+
+      <button class="btn btn-success" onclick="bSolve()">Submit</button>
+    </div> 
+
+
+
+
+
     <div id='successAlert' class="alert alert-success" role="alert" style="display:none;"></div>
     <div id='errorAlert' class="alert alert-error" role="alert" style="display:none;"></div>
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -45,9 +95,8 @@
     {% endif %}
     {% endwith %}
   
-  <h2>Suggestions and Tips to improve your vision</h2>
-  <p>Something something ..............</p>
   </div>
 
 </div>
 {% endblock %}
+

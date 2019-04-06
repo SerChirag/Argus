@@ -9,8 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <div class="container">
-    <img id="bg" class="center-block" src="{{ url_for('video_feed') }}">
-  </div>
+      <h4 class='center-block'>Please proceed to next section when you are at reasonable distance : 100 cm</h4>
 
+    <img id="bg" class="center-block" src="{{ url_for('video_feed') }}">
+    <br>
+    <h3 > <a href="{{ url_for('twenty') }}">Proceed To Vision Acuity Test</a></li></h3>
+    <br>
+  </div>
 </div>
 {% endblock %}

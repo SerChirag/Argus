@@ -1,10 +1,25 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}Argus{% endblock %}
 {% block content %}
 
 <div class="page-header">
-  <h1>Testing eye vision</h1>
+  <h1>Argus</h1>
 </div>
-<p class="lead">This is a system which can be used to do various eye vision tests, and see if your eyes are healthy.</p>
+
+<p class="lead">Argus is a system which can be used to do various eye vision tests, and see if your eyes are healthy.</p>
+
+<img id='cur_img' class='center-block' src="static/img/main.jpg"height="480" width="620" />
+ 
+<h3>About:</h3>
+Vision is out most dominant sense and account for a majority of our sensory information.<br>
+But a lot of people suffer from undiagnosed optical disorders, especially myopia (Nearsightedness).
+It is expected that by 2050, 50% of the world's population, a total of nearly 5 billion, will suffer from myopia.<br><br>
+
+Thus, eye healthcare is of utmost importance in developing countries like India. We have sought to develop a web-application to facilitate the process of eye-checkup.
+This app targets those people who have connection to the internet but cannot visit eye clinics due to affordability, remoteness etc.
+<br>
+<h2 > <a href="{{ url_for('simon') }}">Proceed To Test</a></li></h2>
 
 {% endblock %}
+
+
