@@ -7,8 +7,9 @@ from flask import Flask, render_template, request
 import logging
 from logging import Formatter, FileHandler
 from forms import *
-import os
-from flask import Flask, render_template, flash, request, jsonify
+import os, time
+from flask import Flask, render_template, flash, request, jsonify, Response
+from camera import VideoCamera
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
  
 #----------------------------------------------------------------------------#
@@ -82,6 +83,13 @@ def calculate():
         sum = sum+(int)(j)
     return sum
 
+def gen(camera):
+    while True:
+        frame,dist = camera.get_frame()
+        time.sleep(0.2)
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
 @app.route('/process', methods=['POST'])
 def process():
     name=request.form['name']
@@ -104,6 +112,10 @@ def color_vision():
 def side_vision():
     return render_template('pages/side_vision.html')
 
+@app.route('/simon', methods=['GET', 'POST'])
+def simon():
+    return render_template('pages/simon.html')
+
 @app.route('/eye_coordination', methods=['GET', 'POST'])
 def eye_coordination():
     return render_template('pages/eye_coordination.html')
@@ -113,10 +125,16 @@ def about():
     return render_template('pages/placeholder.about.html')
 
 
+@app.route('/video_feed')
+def video_feed():
+    return Response(gen(VideoCamera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 @app.route('/login')
 def login():
     form = LoginForm(request.form)
     return render_template('forms/login.html', form=form)
+
 
 
 @app.route('/register')
